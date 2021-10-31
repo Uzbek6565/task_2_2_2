@@ -5,18 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Basket {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany
-    List<Product> productList;
+    @Column
+    private Timestamp date;
+
+    @OneToOne(optional = false)
+    private Currency currency;
+
+    @Column(nullable = false)
+    private Integer orderNumber;
+
 
 }

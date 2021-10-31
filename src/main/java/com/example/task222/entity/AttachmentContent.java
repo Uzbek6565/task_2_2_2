@@ -5,18 +5,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Basket {
+public class AttachmentContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany
-    List<Product> productList;
+    @Column(nullable = false)
+    private byte[] bytes;
 
+    @OneToOne
+    private Attachment attachment;
 }
