@@ -16,14 +16,18 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(nullable = false)
     private Timestamp date;
 
-    @OneToOne(optional = false)
-    private Currency currency;
+    @Column(nullable = false)
+    private double totalPrice;
 
     @Column(nullable = false)
     private Integer orderNumber;
 
+    @OneToOne(optional = false)
+    private Currency currency;
 
+    @OneToOne
+    private Payment payment;
 }

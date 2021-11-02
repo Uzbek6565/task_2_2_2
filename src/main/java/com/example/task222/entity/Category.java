@@ -16,10 +16,12 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
     private String name;
-    private String characteristics;
-    private double price;
 
     @ManyToOne
     private Category parentCategory;
+
+    @OneToOne
+    private Attachment attachment;
 }

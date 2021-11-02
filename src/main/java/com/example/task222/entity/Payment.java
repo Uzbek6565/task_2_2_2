@@ -17,4 +17,7 @@ public class Payment {
 
     @Column(nullable = false)
     private String type;
+
+    @Column(nullable = false)
+    private boolean active = true;
 }

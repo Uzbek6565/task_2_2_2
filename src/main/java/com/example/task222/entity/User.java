@@ -16,15 +16,16 @@ public class User {
     private Integer id;
 
     @Column(nullable = false)
-    private String userName;
+    private String name;
 
     @Column(nullable = false)
-    private String password;
+    private String address;
+
+    @Column(nullable = false)
+    private Integer phoneNumber;
 
     @Column(nullable = false)
     private String email;
-
-    private boolean active = false;
 
     @OneToOne
     private Basket basket;

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -15,13 +17,29 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(optional = false)
-    private Category category;
-
-    @OneToOne
-    private Attachment attachment;
-
     private String code;
 
+    @Column(nullable = false)
+    private String name;
 
+    @Column(nullable = false)
+    private String definition;
+
+    @Column(nullable = false)
+    private String characteristics;
+
+    @Column(nullable = false)
+    private Double price;
+
+    @Column(nullable = false)
+    private Integer quantity;
+
+    @ManyToMany
+    private Set<Category> categorySet;
+
+    @OneToMany
+    private List<Attachment> attachmentList;
+
+    @OneToOne
+    private Currency currency;
 }
