@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class AttachmentController {
     }
 
     @PostMapping("/upload")
-    public HttpEntity<?> createAttachment(MultipartHttpServletRequest request){
+    public HttpEntity<?> createAttachment(MultipartHttpServletRequest request) throws IOException {
         Result result = attachmentService.create(request);
         return ResponseEntity.status(result.isSuccess()? 201 : 409).body(result);
     }
