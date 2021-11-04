@@ -36,9 +36,9 @@ public class AttachmentService {
         boolean flag = false;
         Iterator<String> fileNames = request.getFileNames();
         while (fileNames.hasNext()) {
-            flag = true;
             MultipartFile file = request.getFile(fileNames.next());
             if (file != null) {
+                flag = true;
                 String originalFilename = file.getOriginalFilename();
                 long size = file.getSize();
                 String contentType = file.getContentType();
@@ -65,6 +65,7 @@ public class AttachmentService {
     }
 
     public Result update(Integer id, MultipartHttpServletRequest request) throws IOException {
+        boolean flag = false;
         Optional<Attachment> attachmentById = attachmentRepository.findById(id);
         if (attachmentById.isEmpty())
             return new Result("Attachment not found", false);
@@ -75,6 +76,7 @@ public class AttachmentService {
         while (fileNames.hasNext()){
             MultipartFile file = request.getFile(fileNames.next());
             if(file != null){
+                flag = true;
                 String originalFilename = file.getOriginalFilename();
                 long size = file.getSize();
                 String contentType = file.getContentType();
@@ -88,6 +90,8 @@ public class AttachmentService {
                 attachmentContentRepository.save(attachmentContent);
             }
         }
-
+        if (flag)
+            return new Result("Files are updated successfully", true);
+        return new Result("Error while uploading", false);
     }
 }

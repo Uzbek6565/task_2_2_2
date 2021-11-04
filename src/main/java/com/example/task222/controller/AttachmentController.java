@@ -39,7 +39,7 @@ public class AttachmentController {
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> updateAttachment(@PathVariable Integer id, MultipartHttpServletRequest request){
+    public HttpEntity<?> updateAttachment(@PathVariable Integer id, MultipartHttpServletRequest request) throws IOException {
         Result result = attachmentService.update(id, request);
         return ResponseEntity.status(result.isSuccess()?202:400).body(result);
     }
