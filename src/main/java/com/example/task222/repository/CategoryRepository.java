@@ -13,6 +13,6 @@ import org.springframework.data.rest.core.annotation.RestResource;
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
     @RestResource(path = "byName")
-    public Page<Category> findAllByName(@Param("name") String name, Pageable pageable); // /api/category/SEARCH/byName?name=PC
+    Page<Category> findAllByName(@Param("name") String name, Pageable pageable); // /api/category/SEARCH/byName?name=PC
 
 }
