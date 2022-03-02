@@ -17,9 +17,6 @@ public class Comment {
 
     private String comments;
 
-    @Column(nullable = false)
-    private String userName;
-
-    @Column(nullable = false)
-    private String email;
+    @ManyToOne
+    private User user;
 }

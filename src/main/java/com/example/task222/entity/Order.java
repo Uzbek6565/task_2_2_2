@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -25,9 +26,12 @@ public class Order {
     @Column(nullable = false)
     private Integer orderNumber;
 
-    @OneToOne(optional = false)
+    @Column(nullable = false)
+    private int status;
+
+    @ManyToOne(optional = false)
     private Currency currency;
 
-    @OneToOne
-    private Payment payment;
+    @ManyToMany
+    private Set<Payment> paymentTypes;
 }

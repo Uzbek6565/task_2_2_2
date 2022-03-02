@@ -26,20 +26,23 @@ public class Product {
     private String definition;
 
     @Column(nullable = false)
-    private String characteristics;
-
-    @Column(nullable = false)
     private Double price;
 
     @Column(nullable = false)
     private Integer quantity;
 
-    @ManyToMany
-    private Set<Category> categorySet;
+    @Column(nullable = false)
+    private boolean active;
 
-    @OneToMany
+    @ManyToOne
+    private Category category;
+
+    @ManyToMany
     private List<Attachment> attachmentList;
 
-    @OneToOne
+    @ManyToMany
+    private List<Characteristics> characteristicsList;
+
+    @ManyToOne
     private Currency currency;
 }
