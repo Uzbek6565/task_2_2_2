@@ -18,7 +18,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private Timestamp date;
 
     @Column(nullable = false)
@@ -30,7 +30,7 @@ public class Order {
     @Column(nullable = false)
     private int status;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Currency currency;
 
     @ManyToMany
